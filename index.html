@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<title>SweetHome</title>
+
+	<!-- Behavioral Meta Data -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/fonts/icomoon.css">
+    <link rel="stylesheet" href="/css/nprogress.css">
+</head>
+<body>
+    <div class="dtitle">
+        <h1>SweetHome</h1>
+        <h2>The new Socialhub</h2>
+    </div>
+	<div id="container" class="container">
+		<ul id="scene" class="scene">
+			<li class="layer" data-depth="1.00"><img src="img/layer1.png"></li>
+			<li class="layer" data-depth="0.80"><img src="img/layer2.png"></li>
+			<li class="layer" data-depth="0.60"><img src="img/layer3.png"></li>
+			<li class="layer" data-depth="0.40"><img src="img/layer4.png"></li>
+			<li class="layer" data-depth="0.20"><img src="img/layer5.png"></li>
+			<li class="layer" data-depth="0.00"><img src="img/layer6.png"></li>
+		</ul>
+	</div>
+
+    <div class="taskbar">
+        <div class="startbutton">>_&nbsp;</div>
+    </div>
+    
+    <div class="startmenu">
+        <h2>Oh HI :3 !</h2>
+        <div>
+            <ul>
+                <li><a href="#"><span class="icon-search"></span> Search</a></li>
+                <li><a href="#"><span class="icon-glass"></span> Lobby</a></li>
+                <li><a href="#"><span class="icon-fire"></span> Trending</a></li>
+                <li><a href="#"><span class="icon-cogs"></span> Parameters</a></li>
+            </ul>
+        </div>
+    </div>
+	<!-- Scripts -->
+	<script src="/js/parallax.js"></script>
+    <script src="/js/jquery-2.2.1.min.js"></script>
+    <script src="/js/nprogress.js"></script>
+	<script>
+        NProgress.start();
+        var el = el || document.getElementById('container');
+        NProgress.done();
+
+        // Pretty simple huh?
+        var scene = document.getElementById('scene');
+        var parallax = new Parallax(scene);
+        
+        var startmenuvisible = false;
+        
+        $('.startbutton').click(function(){
+            startmenuvisible = true;
+            $('.startmenu').slideToggle();
+        });
+        
+        $('body').click(function(e){
+            console.warn(e.target.className);
+            if(e.target.className != 'startbutton' && e.target.className != 'startmenu'){                
+                if(startmenuvisible) {
+                    startmenuvisible = false;
+                    $('.startmenu').slideUp('fast');
+                }
+            }
+        });
+        
+	</script>
+</body>
+</html>
